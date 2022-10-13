@@ -7,12 +7,12 @@ import { ConversionService } from '../conversion.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  currentToUsd: number[];
-  currentToEur: number[];
+  currentToUsd: number;
+  currentToEur: number;
 
   constructor(private conversionService: ConversionService) {
-    this.currentToUsd = [];
-    this.currentToEur = [];
+    this.currentToUsd = NaN;
+    this.currentToEur = NaN;
   }
 
   ngOnInit(): void {

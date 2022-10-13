@@ -15,9 +15,9 @@ export class AppComponent {
   ];
 
   resultList: any;
-  numeral: any;
-  firstOption: any;
-  secondOption: any;
+  numeral: number;
+  firstOption: string;
+  secondOption: string;
 
   reactiveForm = new FormGroup({
     firstOption: new FormControl(),
@@ -27,6 +27,9 @@ export class AppComponent {
 
   constructor(private conversionService: ConversionService) {
     this.resultList = [];
+    this.numeral = NaN;
+    this.firstOption = '';
+    this.secondOption = '';
   }
 
   ngOnInit() {
