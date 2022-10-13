@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ConversionService } from './conversion.service';
 
 @Component({
@@ -12,40 +13,28 @@ export class AppComponent {
     { id: 2, name: 'USD' },
     { id: 3, name: 'EUR' },
   ];
-  currentToUsd: any;
-  currentToEur: any;
+
   resultList: any;
   numeral: any;
   firstOption: any;
   secondOption: any;
 
+  reactiveForm = new FormGroup({
+    firstOption: new FormControl(),
+    secondOption: new FormControl(),
+    number: new FormControl(),
+  });
+
   constructor(private conversionService: ConversionService) {
-    this.currentToUsd = [];
-    this.currentToEur = [];
     this.resultList = [];
   }
-  setFirstOption(e: any) {
-    this.firstOption = e.target.value;
-  }
-  setSecondOption(e: any) {
-    this.secondOption = e.target.value;
-  }
-  getNumberValue(e: any) {
-    this.numeral = e.target.value;
-  }
+
   ngOnInit() {
-    this.conversionService
-      .setConversion('UAH', 'EUR', 1)
-      .subscribe((result: any) => {
-        console.log(result);
-        this.currentToEur = result;
-      });
-    this.conversionService
-      .setConversion('UAH', 'USD', 1)
-      .subscribe((result: any) => {
-        console.log(result);
-        this.currentToUsd = result;
-      });
+    this.reactiveForm.valueChanges.subscribe((selectedValue) => {
+      this.firstOption = selectedValue.firstOption;
+      this.secondOption = selectedValue.secondOption;
+      this.numeral = selectedValue.number;
+    });
   }
   setUp() {
     this.conversionService

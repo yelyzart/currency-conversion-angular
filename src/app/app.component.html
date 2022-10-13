@@ -1,32 +1,28 @@
 <div class="container">
-  <header>
-    1 UAH = {{ currentToUsd.conversion_result }} USD<br />1 UAH ={{
-      currentToEur.conversion_result
-    }}
-    EUR
-  </header>
-  <h1>Currency Converter</h1>
-  <div class="container-conversion" (change)="setUp()">
+  <app-header></app-header>
+  <div
+    class="container-conversion"
+    [formGroup]="reactiveForm"
+    (change)="setUp()"
+  >
     <div class="options">
-      <select (change)="setFirstOption($event)">
+      <select formControlName="firstOption">
         <option value="" selected disabled>--Select--</option>
         <option *ngFor="let choice of choices" [value]="choice.name">
           {{ choice.name }}
         </option>
       </select>
       <span>to</span>
-      <select (change)="setSecondOption($event)">
+      <select formControlName="secondOption">
         <option value="" selected disabled>--Select--</option>
         <option *ngFor="let choice of choices" [value]="choice.name">
           {{ choice.name }}
         </option>
       </select>
     </div>
-    <form>
-      <input #numbers (change)="getNumberValue($event)" type="text" />
-      <span>=</span>
-      <input placeholder="{{ resultList.conversion_result }}" type="text" />
-    </form>
+    <input type="text" formControlName="number" />
+    <span>=</span>
+    <input placeholder="{{ resultList.conversion_result }}" type="text" />
   </div>
   <img src="assets/picture.png" alt="image" />
 </div>
