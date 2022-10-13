@@ -7,8 +7,8 @@ import { ConversionService } from '../conversion.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  currentToUsd: any;
-  currentToEur: any;
+  currentToUsd: number[];
+  currentToEur: number[];
 
   constructor(private conversionService: ConversionService) {
     this.currentToUsd = [];
@@ -20,13 +20,13 @@ export class HeaderComponent implements OnInit {
       .setConversion('UAH', 'EUR', 1)
       .subscribe((result: any) => {
         console.log(result);
-        this.currentToEur = result;
+        this.currentToEur = result.conversion_result;
       });
     this.conversionService
       .setConversion('UAH', 'USD', 1)
       .subscribe((result: any) => {
         console.log(result);
-        this.currentToUsd = result;
+        this.currentToUsd = result.conversion_result;
       });
   }
 }
