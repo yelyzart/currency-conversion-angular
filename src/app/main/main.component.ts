@@ -14,10 +14,10 @@ export class MainComponent implements OnInit {
     { id: 3, name: 'EUR' },
   ];
 
-  resultList: any;
   numeral: number;
   firstOption: string;
   secondOption: string;
+  resultList: any;
 
   reactiveForm = new FormGroup({
     firstOption: new FormControl(),
@@ -42,6 +42,7 @@ export class MainComponent implements OnInit {
     this.conversionService
       .setConversion(this.firstOption, this.secondOption, this.numeral)
       .subscribe((result: any) => {
+        console.log(result);
         this.resultList = result.conversion_result;
       });
   }
