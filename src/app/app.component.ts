@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ConversionService } from './conversion.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent {
   firstOption: any;
   secondOption: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private conversionService: ConversionService) {
     this.currentToUsd = [];
     this.currentToEur = [];
     this.resultList = [];
@@ -34,26 +34,22 @@ export class AppComponent {
     this.numeral = e.target.value;
   }
   ngOnInit() {
-    this.http
-      .get(
-        'https://v6.exchangerate-api.com/v6/995a5a6bfa74591816964694/pair/UAH/USD/1'
-      )
+    this.conversionService
+      .setConversion('UAH', 'EUR', 1)
       .subscribe((result: any) => {
-        this.currentToUsd = result;
-      });
-    this.http
-      .get(
-        'https://v6.exchangerate-api.com/v6/995a5a6bfa74591816964694/pair/UAH/EUR/1'
-      )
-      .subscribe((result: any) => {
+        console.log(result);
         this.currentToEur = result;
       });
+    this.conversionService
+      .setConversion('UAH', 'USD', 1)
+      .subscribe((result: any) => {
+        console.log(result);
+        this.currentToUsd = result;
+      });
   }
-  setConversion() {
-    return this.http
-      .get(
-        `https://v6.exchangerate-api.com/v6/995a5a6bfa74591816964694/pair/${this.firstOption}/${this.secondOption}/${this.numeral}`
-      )
+  setUp() {
+    this.conversionService
+      .setConversion(this.firstOption, this.secondOption, this.numeral)
       .subscribe((result: any) => {
         this.resultList = result;
       });
