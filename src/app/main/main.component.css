@@ -1,0 +1,37 @@
+.options {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+select {
+  cursor: pointer;
+  border-radius: 20px;
+  color: rgb(54, 97, 147);
+  border: none;
+  padding: 10px;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.19);
+  background: linear-gradient(120deg, #7eb8ff 0%, #c2d7fb 100%);
+}
+input,
+select:focus-visible {
+  outline: 0px;
+}
+option:checked {
+  background: #b5dafb;
+}
+span {
+  color: #0750a9;
+  font-family: "Comforter Brush", cursive;
+  font-size: 24px;
+  margin: 0px 18px;
+}
+input {
+  width: 60px;
+  height: 15px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: none;
+  background: linear-gradient(120deg, #8dbffc 0%, #d0e1ff 100%);
+  box-shadow: 5px 5px 5px 0px rgba(30, 67, 147, 0.11);
+}

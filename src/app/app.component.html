@@ -1,28 +1,5 @@
 <div class="container">
   <app-header></app-header>
-  <div
-    class="container-conversion"
-    [formGroup]="reactiveForm"
-    (change)="setUp()"
-  >
-    <div class="options">
-      <select formControlName="firstOption">
-        <option value="" selected disabled>--Select--</option>
-        <option *ngFor="let choice of choices" [value]="choice.name">
-          {{ choice.name }}
-        </option>
-      </select>
-      <span>to</span>
-      <select formControlName="secondOption">
-        <option value="" selected disabled>--Select--</option>
-        <option *ngFor="let choice of choices" [value]="choice.name">
-          {{ choice.name }}
-        </option>
-      </select>
-    </div>
-    <input type="text" formControlName="number" />
-    <span>=</span>
-    <input placeholder="{{ resultList.conversion_result }}" type="text" />
-  </div>
+  <app-main></app-main>
   <img src="assets/picture.png" alt="image" />
 </div>
