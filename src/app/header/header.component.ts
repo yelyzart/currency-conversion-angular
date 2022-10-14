@@ -19,13 +19,11 @@ export class HeaderComponent implements OnInit {
     this.conversionService
       .setConversion('UAH', 'EUR', 1)
       .subscribe((result: any) => {
-        console.log(result);
         this.currentToEur = result.conversion_result;
       });
     this.conversionService
       .setConversion('UAH', 'USD', 1)
       .subscribe((result: any) => {
-        console.log(result);
         this.currentToUsd = result.conversion_result;
       });
   }
